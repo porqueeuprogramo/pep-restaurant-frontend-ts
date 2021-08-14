@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #343a40;
+  color: #f3f3f3;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+.Toastify__toast--success {
+  background: #28a745 !important;
+}
+
+.Toastify__toast--error {
+  background: #dc3545 !important;
+}

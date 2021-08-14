@@ -1,0 +1,106 @@
+.container {
+  max-width: 700px;
+  padding: 48px 16px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  .optionsContainer {
+    display: flex;
+    justify-content: space-between;
+    .searchRestaurants {
+      display: flex;
+      input {
+        padding: 0 8px;
+      }
+    }
+    .addRestaurantContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .addRestaurant {
+        border-radius: 2px;
+        padding: 8px 12px;
+        background-color: transparent;
+        color: #f8f9fa;
+        text-decoration: none;
+        align-self: flex-end;
+        transition: background-color 0.2s;
+        background-color: #28a745;
+        &:hover {
+          background-color: #218838;
+        }
+      }
+    }
+  }
+}
+
+.restaurants {
+  width: 100%;
+  margin: 0 auto;
+  border-spacing: 0;
+
+  td,
+  th {
+    padding: 16px;
+    border-bottom: 1px solid #d9d9d9;
+  }
+
+  thead {
+    background-color: #343a40;
+
+    th {
+      text-transform: uppercase;
+      color: #f8f9fa;
+      font-size: 14px;
+      text-align: left;
+    }
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  thead tr th:last-child,
+  td:last-child {
+    text-align: center;
+  }
+
+  button {
+    padding: 8px 12px;
+    color: #fff;
+    border-radius: 2px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    &.buttonEdit {
+      background-color: #17b855;
+      transition: 0.2s;
+      &:hover {
+        background-color: #118b2b;
+      }
+    }
+
+    &.buttonDelete {
+      margin-left: 8px;
+      background-color: #dc3545;
+      transition: 0.2s;
+
+      &:hover {
+        background-color: #bd2130;
+      }
+    }
+    &.buttonDuplicate {
+      margin-left: 8px;
+      background-color: #17a2b8;
+      transition: 0.2s;
+
+      &:hover {
+        background-color: #117a8b;
+      }
+    }
+  }
+}
