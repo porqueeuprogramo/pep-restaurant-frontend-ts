@@ -1,34 +1,42 @@
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { FaCheckCircle } from "react-icons/fa";
 import styles from "./styles.module.scss";
-import { useRestaurants } from "hooks/useRestaurants";
-import {v4 as uuid} from 'uuid';
+import { useRestaurants } from "@shared/hooks/useRestaurants";
 
-export function RestaurantAdd() {
-  const history = useHistory();
+export default function RestaurantEdit() {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [capacity, setCapacity] = useState(0);
-  const { createRestaurant } = useRestaurants();
 
-  async function handleSubmit(event: React.FormEvent) {
+  const router = useRouter();
+  const { id } = router.query;
+  const { getRestaurant, updateRestaurant } = useRestaurants();
+
+  useEffect(() => {
+    const currentRestaurant = getRestaurant(id)
+    setName(currentRestaurant.name);
+    setLocation(currentRestaurant.location);
+    setCapacity(currentRestaurant.capacity);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  function handleSubmit(event: React.ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    await createRestaurant({
-      id: uuid(),
+    updateRestaurant(id, {
       name,
       location,
       capacity,
     });
 
-    history.replace("/");
+    router.replace("/");
   }
 
   return (
     <div className={styles.container}>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <h1>New Restaurant</h1>
+        <h1>Edit Restaurant</h1>
 
         <div>
           <label htmlFor="name">Name</label>
@@ -39,7 +47,6 @@ export function RestaurantAdd() {
             autoComplete="off"
             value={name}
             onChange={(event) => setName(event.target.value)}
-            autoFocus
           />
         </div>
 

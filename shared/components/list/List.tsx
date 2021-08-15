@@ -1,23 +1,20 @@
-import { Link, useHistory } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from 'next/router'
 import { FiEdit, FiTrash, FiCopy } from "react-icons/fi";
-import { useRestaurants } from "hooks/useRestaurants";
 import styles from "./styles.module.scss";
 import { v4 as uuid } from 'uuid';
 import { useEffect, useState } from "react";
-import { IRestaurant } from "types";
+import { IRestaurant } from "@shared/types";
+import { useRestaurants } from "@shared/hooks/useRestaurants";
 
 export function RestaurantList() {
-  const history = useHistory();
+  const router = useRouter();
   const { restaurants, deleteRestaurant, duplicateRestaurant, filterRestaurant } = useRestaurants();
   const [currentRestaurants, setCurrentRestaurants] = useState<IRestaurant[] | []>(restaurants)
 
   useEffect(() => {
     setCurrentRestaurants(restaurants);
   }, [restaurants])
-
-  function handleEditRestaurant(id: string) {
-    history.push(`/edit-restaurant/${id}`);
-  }
 
   function handleDeleteRestaurant(id: string) {
     deleteRestaurant(id);
@@ -31,8 +28,10 @@ export function RestaurantList() {
   if (restaurants.length === 0) {
     return (
       <section className={styles.container}>
-        <Link to="/add-restaurant" className={styles.addRestaurant}>
-          Add Restaurant
+        <Link href={{ pathname: "/add-restaurant" }} passHref>
+          <div className={styles.addRestaurant}>
+            Add Restaurant
+          </div>
         </Link>
         <p>There are no restaurants in the database.</p>
       </section>
@@ -43,11 +42,13 @@ export function RestaurantList() {
     <section className={styles.container}>
       <div className={styles.optionsContainer}>
         <div className={styles.searchRestaurants}>
-          <input onChange={searchRestaurant} placeholder="Filter restaurants"/>
+          <input onChange={searchRestaurant} placeholder="Filter restaurants" />
         </div>
         <div className={styles.addRestaurantContainer}>
-          <Link to="/add-restaurant" className={styles.addRestaurant}>
-            Add Restaurant
+          <Link href={{ pathname: "/add-restaurant" }} passHref>
+            <div className={styles.addRestaurant}>
+              Add Restaurant
+            </div>
           </Link>
         </div>
       </div>
@@ -62,17 +63,18 @@ export function RestaurantList() {
         </thead>
         <tbody>
           {currentRestaurants.map((restaurant) => (
-            <tr key={restaurant.id}>
+            <tr className={styles.restaurantRow} key={restaurant.id}>
               <td>{restaurant.name}</td>
               <td>{restaurant.location}</td>
               <td>{restaurant.capacity}</td>
               <td>
-                <button
-                  className={styles.buttonEdit}
-                  onClick={() => handleEditRestaurant(restaurant.id)}
-                >
-                  <FiEdit />
-                </button>
+                <Link href={`/edit-restaurant/${restaurant.id}`} passHref>
+                  <button
+                    className={styles.buttonEdit}
+                  >
+                    <FiEdit />
+                  </button>
+                </Link>
                 <button
                   className={styles.buttonDelete}
                   onClick={() => handleDeleteRestaurant(restaurant.id)}

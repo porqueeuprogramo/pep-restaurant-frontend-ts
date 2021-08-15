@@ -1,1 +1,0 @@
-export { RestaurantAdd } from './Add';

@@ -1,17 +1,17 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import { MdRestaurant } from "react-icons/md";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
-function Header() {
+export function Header() {
   return (
     <header className={styles.header}>
-      <Link to="/">
-        <MdRestaurant />
-        <div>pep-restaurant</div>
+      <Link href="/" passHref>
+        <div>
+          <MdRestaurant />
+          <div>pep-restaurant</div>
+        </div>
       </Link>
     </header>
   );
 }
-
-export default Header;

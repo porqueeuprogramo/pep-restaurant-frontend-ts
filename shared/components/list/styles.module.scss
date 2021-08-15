@@ -34,6 +34,10 @@
     }
   }
 }
+.restaurantRow:hover{
+  background-color: #3ea8b825;
+  transition: background-color 0.25s ease-in-out;
+}
 
 .restaurants {
   width: 100%;
