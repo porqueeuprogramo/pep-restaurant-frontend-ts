@@ -1,21 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
-export default {
-    "httpRequest": {
-        "method": "GET",
-        "path": "/users"
+export const users = [
+    {
+        "name": "tiago"
     },
-    "httpResponse": {
-        "statusCode": 200,
-        "body": [
-            {
-                "name": "tiago"
-            },
-            {
-                "name": "angus"
-            }
-        ]
-    },
-    "times": {
-        "unlimited": true
+    {
+        "name": "angus"
     }
-}
+]

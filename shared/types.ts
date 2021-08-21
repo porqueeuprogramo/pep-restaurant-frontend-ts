@@ -1,3 +1,13 @@
+export interface IRestaurant {
+    id: string,
+    name: string,
+    location: string,
+    capacity: number,
+}
+export interface IUser {
+    id: string,
+    password?: string,
+}
 export interface IRestaurantsProvider {
     restaurants: IRestaurant[],
     getRestaurant: (restaurantId: string) => any,
@@ -7,20 +17,19 @@ export interface IRestaurantsProvider {
     deleteRestaurant: (restaurantId: string) => void,
     filterRestaurant: (searchExpression: string) => IRestaurant[] | [],
 }
+export interface IAuthenticationProvider {
+    setAuthenticated: (authenticated: boolean) => void,
+    authenticated: boolean
+}
 
-export interface IRestaurantsContext {
+interface BaseContext {
     children: React.ReactNode,
 }
+export interface IRestaurantsContext extends BaseContext { };
+export interface IAuthenticationContext extends BaseContext {};
 
 export interface IRestaurantsAPIData {
     name?: string,
     location?: string,
     capacity?: string,
-}
-
-export interface IRestaurant {
-    id: string,
-    name: string,
-    location: string,
-    capacity: number,
 }

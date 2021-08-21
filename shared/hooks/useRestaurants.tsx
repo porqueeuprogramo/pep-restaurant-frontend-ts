@@ -39,18 +39,18 @@ export function RestaurantsProvider({ children }: IRestaurantsContext) {
     toast.success("The restaurant was created");
   }
 
-  function updateRestaurant(restaurantId, data: IRestaurant) {
+  function updateRestaurant(restaurantId: string, data: IRestaurant) {
     const newRestaurantList = [...restaurants];
     const selectedRestaurant = newRestaurantList.findIndex(res => res.id === restaurantId);
-    newRestaurantList[selectedRestaurant] = data;
+    newRestaurantList[selectedRestaurant] = { ...newRestaurantList[selectedRestaurant], ...data };
     setRestaurants(newRestaurantList);
     toast.success("The restaurant was updated");
   }
 
-  function duplicateRestaurant(restaurantId, newId) {
+  function duplicateRestaurant(restaurantId: string, newId: string) {
     const newRestaurantList = [...restaurants];
     const selectedRestaurantIndex = newRestaurantList.findIndex(res => res.id === restaurantId);
-    newRestaurantList.splice(selectedRestaurantIndex, 0, {...newRestaurantList[selectedRestaurantIndex], id: newId});
+    newRestaurantList.splice(selectedRestaurantIndex, 0, { ...newRestaurantList[selectedRestaurantIndex], id: newId });
     setRestaurants(newRestaurantList);
     toast.success("The restaurant was duplicated");
   }

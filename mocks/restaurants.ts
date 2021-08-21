@@ -1,21 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
-export default {
-    "httpRequest": {
-        "method": "GET",
-        "path": "/restaurants"
+export const restaurants = [
+    {
+        "name": "tasco do zé"
     },
-    "httpResponse": {
-        "statusCode": 200,
-        "body": [
-            {
-                "name": "tasco do zé"
-            },
-            {
-                "name": "churrasco típico 3"
-            }
-        ]
-    },
-    "times": {
-        "unlimited": true
+    {
+        "name": "churrasco típico 3"
     }
-}
+]
