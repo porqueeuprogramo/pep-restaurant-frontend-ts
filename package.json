@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "mock": "ts-node bin/mock.ts"
+    "mock": "ts-node bin/mockserver.ts"
   },
   "dependencies": {
     "cross-env": "^7.0.3",

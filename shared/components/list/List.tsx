@@ -28,7 +28,7 @@ export function RestaurantList() {
   if (restaurants.length === 0) {
     return (
       <section className={styles.container}>
-        <Link href={{ pathname: "/add-restaurant" }} passHref>
+        <Link href={{ pathname: "/restaurant/add" }} passHref>
           <div className={styles.addRestaurant}>
             Add Restaurant
           </div>
@@ -45,7 +45,7 @@ export function RestaurantList() {
           <input onChange={searchRestaurant} placeholder="Filter restaurants" />
         </div>
         <div className={styles.addRestaurantContainer}>
-          <Link href={{ pathname: "/add-restaurant" }} passHref>
+          <Link href={{ pathname: "/restaurant-add" }} passHref>
             <div className={styles.addRestaurant}>
               Add Restaurant
             </div>
@@ -68,7 +68,7 @@ export function RestaurantList() {
               <td>{restaurant.location}</td>
               <td>{restaurant.capacity}</td>
               <td>
-                <Link href={`/edit-restaurant/${restaurant.id}`} passHref>
+                <Link href={`/restaurant/edit/${restaurant.id}`} passHref>
                   <button
                     className={styles.buttonEdit}
                   >
