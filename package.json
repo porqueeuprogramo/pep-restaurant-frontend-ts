@@ -6,22 +6,29 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "mock": "ts-node bin/mock.ts"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
     "next": "11.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.2.0",
     "react-toastify": "^7.0.4",
     "sass": "^1.37.5",
+    "ts-node": "^10.2.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@types/concurrently": "^6.2.1",
     "@types/react": "17.0.18",
     "@types/uuid": "^8.3.1",
+    "concurrently": "^6.2.1",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.0",
+    "mockserver-client": "^5.11.2",
+    "mockserver-node": "^5.11.2",
     "typescript": "4.3.5"
   }
 }
